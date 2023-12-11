@@ -76,7 +76,7 @@ function getCoords(searchInput) {
 
     // if search is a zip code. TO DO: limit search to 5 digits
     if (isZipCode) {
-        var searchApiUrl = `http://api.openweathermap.org/geo/1.0/zip?zip=${searchInput},US&appid=${WEATHER_API_KEY}`;
+        var searchApiUrl = `https://api.openweathermap.org/geo/1.0/zip?zip=${searchInput},US&appid=${WEATHER_API_KEY}`;
         fetch(searchApiUrl, {
             method: 'GET',
     
@@ -92,7 +92,7 @@ function getCoords(searchInput) {
 
     // if search is by city, return first result
     } else {
-        var searchApiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${searchInput}&limit=1&appid=${WEATHER_API_KEY}`;
+        var searchApiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${searchInput}&limit=1&appid=${WEATHER_API_KEY}`;
         fetch(searchApiUrl, {
             method: 'GET',
     
@@ -110,7 +110,7 @@ function getCoords(searchInput) {
 
 // function to get the current weather and 5-day forecast from latitude and longitude
 function getForecast(lat,lon) {
-    var forecastUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${WEATHER_API_KEY}`;
+    var forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${WEATHER_API_KEY}`;
 
     fetch(forecastUrl, {
         method: 'GET',
@@ -125,7 +125,7 @@ function getForecast(lat,lon) {
         var resultsWind = data.list[0].wind.speed;
         var resultsHumidity = data.list[0].main.humidity;
         var resultsWeatherIcon = data.list[0].weather[0].icon; // this is the weather icon
-        var resultsWeatherIconUrl = `http://openweathermap.org/img/wn/${resultsWeatherIcon}.png`; // and this is the image url for the weather icon
+        var resultsWeatherIconUrl = `https://openweathermap.org/img/wn/${resultsWeatherIcon}.png`; // and this is the image url for the weather icon
 
         // Check if local storage exists, and if not, save to local storage, both the last search and the all search keys
         updateSearchHistory(resultsCity);
@@ -145,7 +145,7 @@ function getForecast(lat,lon) {
             var forecastWind = data.list[i].wind.speed;
             var forecastHumidity = data.list[i].main.humidity;
             var forecastWeatherIcon = data.list[i].weather[0].icon;
-            var forecastWeatherIconUrl = `http://openweathermap.org/img/wn/${forecastWeatherIcon}.png`
+            var forecastWeatherIconUrl = `https://openweathermap.org/img/wn/${forecastWeatherIcon}.png`
 
             // then populate the cards with the API data
             var dayContainer = $(`.day-container-${i}`);
