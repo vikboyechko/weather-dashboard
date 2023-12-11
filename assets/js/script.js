@@ -65,6 +65,7 @@ searchButton.click(function(event) {
     event.preventDefault();
     var searchedCity = searchInput.val();
     getCoords(searchedCity);
+    searchInput.val(''); // clear the input field after searching
 });
 
 
