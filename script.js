@@ -22,6 +22,10 @@ if (!localStorage.getItem('allSearches')) {
     localStorage.setItem('allSearches', JSON.stringify([]));
 }
 
+// on website load, get the last searched city and call API for the forecast
+var lastSearch = localStorage.getItem("lastSearch")
+getCoords(lastSearch)
+
 // gets the previous searched cities from local storage
 function updateSearchHistory(searchedCity) {
     localStorage.setItem('lastSearch', searchedCity)
@@ -33,17 +37,6 @@ function updateSearchHistory(searchedCity) {
     }
 }
 
-// on website load, get the last searched city and call API for the forecast
-var lastSearch = localStorage.getItem("lastSearch")
-getCoords(lastSearch)
-
-// the search button
-searchButton.click(function(event) {
-    event.preventDefault();
-    var searchedCity = searchInput.val();
-    getCoords(searchedCity)
-});
-
 function displayAllSearches() {
     var allSearches = JSON.parse(localStorage.getItem('allSearches'));
     var listElement = $('#searched-cities');
@@ -52,7 +45,7 @@ function displayAllSearches() {
     if (allSearches.length > 0) {
         listElement.text('Recent searches').css('font-style', 'italic');
         allSearches.forEach(function(city) {
-            listElement.append('<li>' + city + '</li>');
+            listElement.append('<li class="city-item">' + city + '</li>');
         });
         resultsEl.show();
         forecastEl.show();
@@ -62,8 +55,15 @@ function displayAllSearches() {
         forecastEl.hide();
     }
 }
-
 displayAllSearches()
+
+// the search button
+searchButton.click(function(event) {
+    event.preventDefault();
+    var searchedCity = searchInput.val();
+    getCoords(searchedCity)
+});
+
 
 // Function to first get latitude and longitude coordinates from zip or city search
 function getCoords(searchInput) {
@@ -153,6 +153,10 @@ function getForecast(lat,lon) {
     })
 }
 
-
+// select a previously searched city to display its forecast, using the dynamically generated .city-item class
+$('#searched-cities').on('click', '.city-item', function() {
+    var city = $(this).text(); // use 'this' text as the city name to pass to getCoords function
+    getCoords(city);
+});
 
 

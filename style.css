@@ -63,6 +63,9 @@ img.results-icon {
     border-top: 1px solid rgb(193, 193, 193);
 }
 
+.card {
+    margin-top: 20px;
+}
 .card-body p {
     margin: 5px 0;
 }
