@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Weather Dashboard</title>
   </head>
 
@@ -14,14 +14,14 @@
     <header class="">
       <nav class="navbar navbar-light bg-light px-3">
         <a class="navbar-brand" href="#">
-          <img src="weather-icon.png" width="50" alt="">
+          <img src="./assets/images/weather-icon.png" width="50" alt="">
           <h1 class="d-inline align-middle text-info">Weather Dashboard</h1>
         </a>
       </nav>
-
     </header>
 
     <main class="container">
+      <!-- the search section -->
       <section class="row my-4">
         <section class="col-12 col-md-3 search-city">
         <h4>Search for a City:</h4>
@@ -32,6 +32,7 @@
         <ul id="searched-cities"></ul>
         </section>
         
+        <!-- the current results section -->
         <section class="col-12 col-md-9 city-main">
           <div class="results">
             <h2 class="results-city"></h2>
@@ -40,11 +41,13 @@
               <p class="results-wind"></p>
               <p class="results-humidity"></p>
           </div>
-          
+
+          <!-- the 5 day forecast -->
           <div class="forecast">
             <h4>5-Day Forecast</h4>
             <div class="row">
               
+              <!-- each card repeated for 5 days -->
               <div class="col day-container-1">
                 <div class="card">
                   <div class="card-body">
@@ -104,18 +107,14 @@
                   </div>
                 </div>
               </div>
-
             </div>
-
           </div>
         </section>
       </section>
-      
-  
       </main>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"></script>
-    <script src="script.js"></script>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
